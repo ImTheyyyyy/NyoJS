@@ -1,0 +1,59 @@
+{
+  "name": "nyo-js",
+  "version": "1.0.1",
+  "description": "NyoJS Web app framework",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs"
+    },
+    "./middleware/logger": {
+      "import": "./lib/middleware/logger.js",
+      "require": "./lib/middleware/logger.js"
+    },
+    "./middleware/json": {
+      "import": "./lib/middleware/json.js",
+      "require": "./lib/middleware/json.js"
+    },
+    "./middleware/errorHandler": {
+      "import": "./lib/middleware/errorHandler.js",
+      "require": "./lib/middleware/errorHandler.js"
+    },
+    "./middleware/validate": {
+      "import": "./lib/middleware/validate.js",
+      "require": "./lib/middleware/validate.js"
+    },
+    "./middleware/cookies": {
+      "import": "./lib/middleware/cookies.js",
+      "require": "./lib/middleware/cookies.js"
+    },
+    "./middleware/session": {
+      "import": "./lib/middleware/session.js",
+      "require": "./lib/middleware/session.js"
+    },
+    "./middleware/static": {
+      "import": "./lib/middleware/static.js",
+      "require": "./lib/middleware/static.js"
+    },
+    "./router": {
+      "import": "./lib/router.js",
+      "require": "./lib/router.js"
+    }
+  },
+  "scripts": {
+    "start": "node examples/app.js"
+  },
+  "keywords": [
+    "web",
+    "app",
+    "http",
+    "application",
+    "framework",
+    "middleware",
+    "nyojs"
+  ],
+  "author": "Theyyyyy",
+  "license": "MIT",
+  "type": "module"
+}
