@@ -1,10 +1,10 @@
-# NanoUI
+# NyoJS
 
-NanoUI is a lightweight framework for building web applications with support for middleware, advanced routing, error handling, and more.
+NyoJS is a lightweight framework for building web applications with support for middleware, advanced routing, error handling, and more.
 
 ## Installation
 
-You can install NanoUI from npm:
+You can install NyoJS from npm:
 
 ```sh
 npm install nyo-js
@@ -12,11 +12,12 @@ npm install nyo-js
 
 ## Basic Usage
 
-Here is a basic example of how to use NanoUI:
+Here is a basic example of how to use NyoJS:
 
 ```javascript
-import { NyoJS, Logger, Json, ErrorHandler, Validate, Cookies, Session, ServeStatic } from 'nyo-js';
+import { NyoJS, Logger, Json, ErrorHandler, Validate, Cookies, Session, ServeStatic, RateLimit, WebSocket } from 'nyo-js';
 import Joi from 'joi';
+import http from 'http';
 
 const app = new NyoJS();
 
@@ -26,6 +27,7 @@ app.use(Json);
 app.use(Cookies);
 app.use(Session);
 app.use(ServeStatic('public'));
+app.use(RateLimit({ windowMs: 60000, max: 100 })); // Limit to 100 requests per minute
 
 const schema = Joi.object({
     name: Joi.string().required(),
@@ -39,6 +41,13 @@ app.post('/data', Validate(schema), async ctx => {
 app.get('/', async ctx => {
     ctx.body = 'Hello, NyoJS!';
 });
+
+const server = http.createServer(app.handleRequest.bind(app));
+app.use(WebSocket(server));
+
+server.listen(3000, () => {
+    console.log('Server is running on http://localhost:3000');
+});
 ```
 
 ## Middleware
@@ -47,7 +56,7 @@ app.get('/', async ctx => {
 The enhanced logger middleware logs request details, including headers and request body.
 
 ```javascript
-import { Logger } from 'nanoui';
+import { Logger } from 'NyoJS';
 
 app.use(Logger);
 ```
@@ -56,7 +65,7 @@ app.use(Logger);
 The JSON middleware automatically parses requests with JSON content.
 
 ```javascript
-import { Json } from 'nanoui';
+import { Json } from 'NyoJS';
 
 app.use(Json);
 ```
@@ -65,7 +74,7 @@ app.use(Json);
 The error handling middleware captures and responds to errors uniformly.
 
 ```javascript
-import { ErrorHandler } from 'nanoui';
+import { ErrorHandler } from 'NyoJS';
 
 app.use(ErrorHandler);
 ```
@@ -115,7 +124,7 @@ app.use(ServeStatic('public'));
 ```
 
 ## Routing
-NanoUI supports advanced routing with HTTP methods like GET, POST, PUT, and DELETE.
+NyoJS supports advanced routing with HTTP methods like GET, POST, PUT, and DELETE.
 
 ```javascript
 app.get('/path', async ctx => {

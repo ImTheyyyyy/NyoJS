@@ -6,6 +6,8 @@ import validate from './middleware/validate.js';
 import cookies from './middleware/cookies.js';
 import session from './middleware/session.js';
 import serveStatic from './middleware/static.js';
+import rateLimit from './middleware/rateLimit.js';
+import webSocket from './middleware/webSocket.js';
 
 export {
     Application as NyoJS,
@@ -15,5 +17,7 @@ export {
     validate as Validate,
     cookies as Cookies,
     session as Session,
-    serveStatic as ServeStatic
+    serveStatic as ServeStatic,
+    rateLimit as RateLimit,
+    webSocket as WebSocket
 };
