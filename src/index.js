@@ -8,6 +8,7 @@ import session from './middleware/session.js';
 import serveStatic from './middleware/static.js';
 import rateLimit from './middleware/rateLimit.js';
 import webSocket from './middleware/webSocket.js';
+import taskScheduler from './middleware/taskScheduler.js';
 
 export {
     Application as NyoJS,
@@ -19,5 +20,6 @@ export {
     session as Session,
     serveStatic as ServeStatic,
     rateLimit as RateLimit,
-    webSocket as WebSocket
+    webSocket as WebSocket,
+    taskScheduler as TaskScheduler
 };

@@ -8,6 +8,7 @@ const session = require('./middleware/session.js');
 const serveStatic = require('./middleware/static.js');
 const rateLimit = require('./middleware/rateLimit.js');
 const webSocket = require('./middleware/webSocket.js');
+const taskScheduler = require('./middleware/taskScheduler.js');
 
 module.exports = {
     NyoJS: Application,
@@ -19,5 +20,6 @@ module.exports = {
     Session: session,
     ServeStatic: serveStatic,
     RateLimit: rateLimit,
-    WebSocket: webSocket
+    WebSocket: webSocket,
+    TaskScheduler: taskScheduler
 };
